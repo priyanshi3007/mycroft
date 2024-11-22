@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import ConfigForm from "./components/ConfigForm";
+import LivePreview from "./components/LivePreview";
+import "./App.css";
 
-function App() {
+const App = () => {
+  const [config, setConfig] = useState({
+    configName: "config-1",
+    botName: "Greebo",
+    fontFamily: "Arial, sans-serif",
+    headerColor: "#E63A1E",
+    headerFontColor: "#FFFFFF",
+    backgroundColor: "#E8E1DB",
+    chatFontColor: "#323130",
+    avatarImage: "",
+    launcherImage: "",
+  });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app-container">
+      <ConfigForm config={config} setConfig={setConfig} />
+      <LivePreview config={config} />
     </div>
   );
-}
+};
 
 export default App;
